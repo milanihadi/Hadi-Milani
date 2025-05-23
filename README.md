@@ -1,3 +1,6 @@
+<p align="center">
+  <img src="https://raw.githubusercontent.com/milanihadi/Hadi-Milani/main/MilaniHVAC.png" alt="MilaniHVAC Logo" width="200"/>
+</p>
 # EFDS – Equal Friction Duct Sizing Tool for AutoCAD
 
 **EFDS** is a lightweight AutoLISP tool that automates duct sizing directly in AutoCAD using the Equal Friction Method. It is designed for use in early design stages and educational contexts, especially for engineers working with VAV systems.
