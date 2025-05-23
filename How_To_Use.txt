@@ -1,0 +1,55 @@
+
+🔧 How to Use the EFDS Tool (Equal Friction Duct Sizing for AutoCAD)
+Load the LISP Tool into AutoCAD
+Open AutoCAD and type APPLOAD, then browse to and load   EFDS.fas.
+
+Run the Tool
+Type EFDS in the command line and press Enter.
+
+Input Design Parameters via Dialog Box
+A dialog window will open asking for:
+
+Unit System: Choose IP (in, fpm, in.wg) or SI (mm, m/s, Pa)
+
+Air Density (e.g., 0.075 lb/ft³ or 1.2 kg/m³)
+
+Duct Roughness (e.g., 0.0003 ft or 0.9 mm)
+
+Target Friction Loss (in.wg/100 ft or Pa/m)
+
+Text settings (height, font, color)
+
+Line settings (layer names, color, offset options)
+
+Pick a Starting Point
+Select a point on the first duct line in your network — this is where the flow will begin tracing.
+
+Select All Duct Lines in the Network
+When prompted, use a window or manual selection to select all lines (LINE or LWPOLYLINE) representing ducts.
+
+Automatic Calculations and Annotations
+The tool will:
+
+Trace the flow from the starting point
+
+Read FLOW RATE from connected diffuser blocks
+
+Calculate:
+
+Duct diameter (or rectangular width/height)
+
+Velocity
+
+Friction loss
+
+Annotate the network directly on the drawing (text appears on duct lines)
+
+Store full data (flow, velocity, diameter, dp, etc.) as XData on each line
+
+Export Results to CSV (Optional)
+To export the full flow data for all ducts, type the command:EX
+
+Note: EFDS.prv is an auxiliary file automatically generated during compilation and is not required for using the tool.
+
+
+
