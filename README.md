@@ -51,6 +51,17 @@
 
 ---
 
+
+## 🧮 Load Calculation Updates
+
+The repository now includes shared RTSM/CLTD load-calculation helpers in `src/load_calculations.py` and ASHRAE 62.1-style space defaults in `src/space_types.py`. The calculation model:
+
+- Calculates infiltration from Space ACH (`volume × ACH / 60`).
+- Calculates required outdoor-air ventilation from both people and area rates (`CFM/person + CFM/ft²`).
+- Includes occupant latent heat as a Space Parameter.
+- Applies infiltration and ventilation loads to room cooling/heating, Total CFM, and GPM for VAV/CAV systems.
+- Applies only infiltration to room cooling/heating, Total CFM, and GPM for other systems, while reporting ventilation as a separate load.
+
 ## 📚 Methodology
 
 All equations and logic are based on:
