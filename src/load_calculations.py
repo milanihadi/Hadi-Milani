@@ -81,7 +81,7 @@ def ventilation_cfm(area_ft2: float, occupants: float, cfm_per_person: float, cf
 
 
 def _air_loads(cfm: float, dry_bulb_delta_f: float, grains_delta: float) -> tuple[float, float, float]:
-    sensible = SENSIBLE_AIR_LOAD_FACTOR * cfm * abs(dry_bulb_delta_f)
+    sensible = SENSIBLE_AIR_LOAD_FACTOR * cfm * max(dry_bulb_delta_f, 0.0)
     latent = LATENT_AIR_LOAD_FACTOR * cfm * max(grains_delta, 0.0)
     heating = SENSIBLE_AIR_LOAD_FACTOR * cfm * max(-dry_bulb_delta_f, 0.0)
     return sensible, latent, heating

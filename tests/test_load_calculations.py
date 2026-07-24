@@ -38,6 +38,16 @@ class LoadCalculationTests(unittest.TestCase):
         vav = calculate_room_loads("RTSM", "VAV", self.space, self.base, 20, 10)
         self.assertGreater(vav.room_cooling_btu_h, result.room_cooling_btu_h)
 
+
+    def test_cold_outdoor_air_does_not_add_sensible_cooling(self):
+        cold_space = self.space.__class__(
+            **{**self.space.__dict__, "outdoor_temp_f": 55, "outdoor_grains_lb": self.space.indoor_grains_lb}
+        )
+        result = calculate_room_loads("RTSM", "VAV", cold_space, self.base, 20, 10)
+        self.assertEqual(result.infiltration_sensible_btu_h, 0)
+        self.assertEqual(result.ventilation_sensible_btu_h, 0)
+        self.assertGreater(result.room_heating_btu_h, self.base.heating_btu_h)
+
     def test_space_type_database_includes_area_oa_and_latent(self):
         self.assertIn("cfm_per_ft2", SPACE_TYPES["office"])
         self.assertIn("occupant_latent_btu_h", SPACE_TYPES["office"])
